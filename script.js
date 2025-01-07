@@ -6,12 +6,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const clearListButton = document.getElementById("clear-list");
 
     let totalExpense = 0;
-    let selectedCurrency = "$"; // Default currency is USD
+    let selectedCurrency = "$"; // default currency is USD
 
-    // Load expenses from local storage
+    // load expenses from local storage
     loadExpenses();
 
-    // Listen for currency change
+    // currency change
     currencySelector.addEventListener("change", () => {
         selectedCurrency = getCurrencySymbol(currencySelector.value);
         updateTotalExpenseDisplay();
@@ -24,15 +24,14 @@ document.addEventListener("DOMContentLoaded", () => {
         const description = document.getElementById("description").value;
         const amount = parseFloat(document.getElementById("amount").value);
 
-        // Create expense item and add to list
         addExpense(description, amount);
         saveExpense(description, amount);
 
-        // Reset form fields
+        // reset form fields
         form.reset();
     });
 
-    // Clear list button event listener
+    // clear list button 
     clearListButton.addEventListener("click", () => {
         localStorage.removeItem("expenses");
         localStorage.removeItem("totalExpense");
@@ -43,8 +42,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     function addExpense(description, amount) {
-        totalExpense += amount;  // Add the amount to the running total
-        updateTotalExpenseDisplay(); // Update total expense with selected currency
+        totalExpense += amount;  
+        updateTotalExpenseDisplay(); 
 
         const expenseItem = document.createElement("div");
         expenseItem.className = "expense-item";
@@ -92,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
             case "EUR": return "€";
             case "INR": return "₹";
             case "GBP": return "£";
-            default: return "$"; // Default to USD
+            default: return "$"; 
         }
     }
 });
